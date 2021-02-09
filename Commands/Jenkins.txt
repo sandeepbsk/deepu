@@ -1,0 +1,60 @@
+Create UBUNTU 20.04 EC2 Instance:
+=================================
+sudo apt update
+
+sudo apt install openjdk-11-jdk -y
+
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
+    /etc/apt/sources.list.d/jenkins.list'
+	
+sudo apt-get update
+
+sudo apt-get install jenkins
+
+sudo systemctl start jenkins
+
+sudo systemctl enable jenkins
+
+sudo systemctl start jenkins
+
+http://publicip:8080 ==>Navigate to website
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+60e21c3c2b6f4936b8b284777ad651c1
+================================>User_Key
+
+Login Id password enter ur own=>save&continue..
+
+--------------------------------------------------------------
+Create a Centos EC2 Instance Centos7
+
+sudo yum install wget -y
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+	
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+sudo yum upgrade
+
+sudo yum install jenkins java-1.8.0-openjdk-devel -y
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable jenkins
+
+sudo systemctl start jenkins
+
+sudo systemctl status jenkins
+
+http://publicip:8080 ==>Navigate to website
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+60e21c3c2b6f4936b8b284777ad651c1
+================================>User_Key
+
+Login Id password enter ur own=>save&continue..
