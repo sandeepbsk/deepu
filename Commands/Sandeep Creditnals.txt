@@ -1,0 +1,18 @@
+Account Id:
+514965430807 
+Account Name:
+aws.sandeep23 
+Firstname :
+Sandeep
+Lastname :
+Kumar
+Mail ID & User ID :
+azure.sandeep23@gmail.com
+Password :
+Bandi@8008
+Mobile No :
+8074939540
+
+Khaja sir credinals :
+shaikkhajaibrahim
+shaikkhajaibrahim@test.com

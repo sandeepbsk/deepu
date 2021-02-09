@@ -1,0 +1,9 @@
+<html>
+  <head> 
+  <title> Welcome To BSK Error Page </title>
+  </head>
+  <body>
+  	<h1> Error Page </h1>
+  </body>
+  
+  </html>

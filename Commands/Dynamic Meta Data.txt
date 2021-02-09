@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# IMDSv2
+# Get the Token
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/
+
+# Get the AMI id of this instance
+### Version 1
+curl http://169.254.169.254/latest/meta-data/ami-id
+
+### Version 2
+curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/ami-id
+
+# Get public ip address
+### Version 1
+public_ip=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
+
+echo $public_ip
+
+### Version 2
+public_ip=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/public-ipv4)
+
+echo $public_ip
+# Get AMI Id
+
+## Version 1
+ami_id=$(curl http://169.254.169.254/latest/meta-data/ami-id)
+
+echo $ami-id
+
+### Version2 
+ami_id=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/ami-id)
+
+echo $ami_id
+
+### Get VPC-id
+### Version 1
+vpc_id=$(curl http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:fa:6a:3b:76:e0/vpc-id)
+									      *****************
+echo $vpc_id														    
+
+### Version2
+vpc_id=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:fa:6a:3b:76:e0/vpc-id)
+														    *****************
+echo $vpc_id														    
+
+### Get Subnet-id
+### Version 1
+subnet_id=$(curl http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:fa:6a:3b:76:e0/subnet-id)
+										*****************
+echo $subnet_id
+
+### Version
+subnet_id=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:fa:6a:3b:76:e0/subnet-id) 
+															*****************
+echo $subnet_id

@@ -1,0 +1,24 @@
+Sites :
+
+https://github.com/logpai/loghub
+------------------------------------>Sample log data
+
+https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns
+---------------------------------------------------------------------------------------------->Logstash patters
+
+http://grokdebug.herokuapp.com/
+-------------------------------->Grok debugger
+
+
+[Mon Dec 05 19:15:57 2005] [error] mod_jk child workerEnv in error state 6
+**************************************************************************=>APACHE
+%{DAY:dayofweek} %{MONTH:mon} %{NUMBER:date} %{TIME:time} %{YEAR:year}%{GREEDYDATA:message}
+
+
+03-17 16:13:38.859  2227  2227 D TextView: visible is system.time.showampm
+**************************************************************************=>ANDROID
+(?<Date>\d{2}-\d{2}) %{TIME:Time}%{SPACE}%{NUMBER:Number1}%{SPACE} %{NUMBER:Number2}%{SPACE}%{WORD:debuglevel}%{GREEDYDATA:Message}
+
+Jun 15 04:06:19 combo su(pam_unix)[21416]: session closed for user cyrus
+************************************************************************=>LINUX
+%{MONTH:month} %{NUMBER:date} %{TIME:time} %{WORD:method} %{GREEDYDATA:message}

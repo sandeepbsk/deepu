@@ -1,0 +1,242 @@
+============================================================================
+		1	vi main_with_include.yaml
+============================================================================
+---
+- hosts: all
+  gather_facts: no 
+  become: no
+  tasks:
+  - name: non_included task
+    debug:
+      msg: "i'm from calling playbook"
+  - include: more-task.yaml
+=============================================================================
+		1	vi more-tasks.yaml
+=============================================================================
+---
+- name: include task 1
+  debug:
+    msg: "This is first included task"
+
+- name: include task 2
+  debug:
+    msg: "This is second included task"
+
+[CODE]
+vi inventory
+localhost (:wq)
+
+ansible-playbook -i inventory main_with_include.yaml
+
+=============================================================================
+			vi main_with_import.yaml
+=============================================================================
+---
+- hosts: all
+  gather_facts: no 
+  become: no
+  tasks:
+  - name: non_imported task
+    debug:
+      msg: "i'm from calling playbook"
+  - import_tasks: more-task.yaml
+
+
+[CODE]
+ansible-playbook -i inventory main_with_import.yaml
+============================================================================
+		2	vi main_with_include.yaml
+============================================================================
+---
+- hosts: all
+  gather_facts: no 
+  become: no
+  tasks:
+  - name: non_included task
+    debug:
+      msg: "i'm from calling playbook"
+  - include: more-task.yaml
+    vars:
+      test: "hi"
+=============================================================================
+		2	vi more-tasks.yaml
+=============================================================================
+---
+- name: include task 1
+  debug:
+    msg: "This is first included task {{ test }}"
+
+- name: include task 2
+  debug:
+    msg: "This is second included task {{ test }}"
+
+[CODE]
+ansible-playbook -i inventory main_with_include.yaml --list-tasks
+
+[CODE]
+ansible-playbook -i inventory main_with_import.yaml --list-tasks
+
+
+[CODE]
+ansible-playbook -e "test=hello" -i inventory main_with_include.yaml
+=============================================================================
+			vi main_with_tags.yaml
+=============================================================================
+---
+- name: tag inclusion
+  hosts: localhost
+  gather_facts: false
+  become: no
+  tasks:
+    - name: dummy task 1
+      debug:
+        msg: "dummy task 1"
+      tags: dummy
+    - name: main task 1
+      debug:
+        msg: "main task 1"
+      tags: main
+
+[CODE]
+ansible-playbook -i inventory main_with_tags.yaml
+
+ansible-playbook -i inventory --tags dummy main_with_tags.yaml
+
+ansible-playbook -i inventory --skip-tags dummy main_with_tags.yaml
+=============================================================================
+		T O M C A T _ U B U N T U - F I L E S
+=============================================================================
+[FOLDER]vi vars_main.yaml
+
+---
+tomcat_download_source: "https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.61/bin/apache-tomcat-8.5.61.zip"
+tomcat_download_location: "/tmp/apache-tomcat-8.5.61.zip"
+tomcat_install_path: "/opt/tomcat"
+java_path: "/usr/lib/jvm/java-1.8.0-openjdk-amd64"
+username: tomcat
+tomcat_home: "/opt/tomcat/latest"
+java_package: "openjdk-8-jdk"
+unzip_package: unzip
+tomcat_executables:
+- /opt/tomcat/latest/bin/catalina.sh
+- /opt/tomcat/latest/bin/ciphers.sh
+- /opt/tomcat/latest/bin/configtest.sh
+- /opt/tomcat/latest/bin/daemon.sh
+- /opt/tomcat/latest/bin/digest.sh
+- /opt/tomcat/latest/bin/setclasspath.sh
+- /opt/tomcat/latest/bin/shutdown.sh
+- /opt/tomcat/latest/bin/startup.sh
+- /opt/tomcat/latest/bin/tool-wrapper.sh
+- /opt/tomcat/latest/bin/version.sh
+
+[FOLDER]vi tasks_main.yaml
+
+---
+# tasks file for apache-webserver
+- name: update the packages for ubuntu  
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+- name: install apache on ubuntu
+  apt:
+    name: "{{apache_pack_deb}}"
+    state: present
+  notify: restart apache2
+  when: ansible_os_family == "Debian"
+- name: install apache on rhel
+  yum:
+    name: "{{apache_pack_rhel}}"
+    state: present
+  notify:  restart httpd
+  when: ansible_os_family == "RedHat"
+- name: set service name in case of redhat
+  set_fact:
+    service_name: "{{apache_pack_rhel}}"
+  when: ansible_os_family == "RedHat"
+- name: set service name in case of debian
+  set_fact:
+    service_name: "{{apache_pack_deb}}"
+  when: ansible_os_family == "Debian"
+- name: display service name
+  debug:
+    msg: "{{service_name}}"
+- name: enable service 
+  service:
+    name: "{{service_name}}"
+    enabled: true
+    state: started
+
+[FOLDER]vi handlers_main.yaml
+
+---
+# handlers file for apache-webserver
+- name: restart apache2
+  service: 
+    name: apache2
+    state: restarted
+
+- name: restart httpd
+  service:
+    name: httpd
+    state: restarted
+
+[FOLDER]vi tests_roles.yaml
+
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - apache-webserver
+
+[FOLDER]vi templates_tomcat.service.j2
+
+[Unit]
+Description=Tomcat 8.5 servlet container
+After=network.target
+
+[Service]
+Type=forking
+
+User={{ username }}
+Group={{ username }}
+
+Environment="JAVA_HOME={{ java_path }}"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
+
+Environment="CATALINA_BASE={{ tomcat_home }}"
+Environment="CATALINA_HOME={{ tomcat_home }}"
+Environment="CATALINA_PID={{ tomcat_home }}/temp/tomcat.pid"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+
+ExecStart={{ tomcat_home }}/bin/startup.sh
+ExecStop={{ tomcat_home }}/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
+
+[INVENTORY FOLDER]vi dev_inventory
+
+[appserver]
+localhost
+
+[INVENTORY FOLDER]vi prod_inventory
+
+[appserver]
+192.168.0.11
+
+vi role_usage_main.yaml
+
+---
+- name: install tomcat on ubuntu
+  hosts: appserver
+  become: yes
+  roles:
+    - role: tomcat-ubuntu
+    - role: geerlingguy.mysql
+
+[CODE]
+ansible-playbook -i dev_inventory role_usage_main.yaml
+
+ansible-galaxy install geerlingguy.mysql
+
+sudo apt install python3-pymysql

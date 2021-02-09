@@ -1,0 +1,45 @@
+cd D:\AWS\Git
+
+git init
+
+git status
+
+git add .\Readme.md
+
+git status
+
+git config --global user.name "qtdevops"
+
+git config --global user.email "qtdevops@gmail.com"
+
+git commit -m "First Change"
+
+git status
+
+git log
+
+git log --oneline
+
+==========>07/02
+git branch
+
+git branch rel_1.0
+
+git branch rel_1.1
+
+git checkout rel_1.0
+
+git branch
+
+git checkout master
+
+git branch
+
+git checkout -b rel_1.1
+
+git branch
+
+
+
+
+

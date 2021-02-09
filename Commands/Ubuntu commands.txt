@@ -1,0 +1,101 @@
+====================================================================================
+                      E L A S T I C S E A R C H  
+====================================================================================
+sudo apt update
+
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+sudo apt-get install apt-transport-https
+
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+sudo apt-get update && sudo apt-get install elasticsearch
+
+sudo systemctl status elasticsearch.service
+
+sudo systemctl enable elasticsearch.service
+
+sudo systemctl start elasticsearch.service
+
+sudo systemctl status elasticsearch.service
+
+ubuntu@ip-172-31-22-170:~$ history
+
+curl -X GET "localhost:9200/?pretty"
+
+http://publicipaddress:9200
+       ***************
+sudo -i
+
+ls /etc/elasticsearch
+
+vi /etc/elasticsearch/elasticsearch.yml
+------------------------------------------->INSERT
+1>Cluster.name : Name-application
+2>Network.host : privateipaddress
+                 ****************
+3>Discovery.seeds_host:["privateipaddress"]
+                         ****************
+cat /etc/elasticsearch/elasticsearch.yml
+
+sudo systemctl restart elasticsearch.service
+
+http://publicipaddress:9200
+       ***************
+============================================================================
+			K I B A N A
+============================================================================
+sudo apt update
+
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+sudo apt-get install apt-transport-https
+
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+sudo apt-get update && sudo apt-get install kibana
+
+sudo -i
+
+vi /etc/kibana/kibana.yml
+-------------------------->INSERT
+1>Server.host : "kibana privateipaddr"
+                 ********************
+2>Elasticsearch.host : ["Elasticsearch ipaddr"]
+                         ********************
+sudo /bin/systemctl daemon-reload
+
+sudo /bin/systemctl enable kibana.service
+
+sudo systemctl start kibana.service
+
+sudo systemctl status kibana.service
+
+http://publicipaddress:5601
+       ***************
+============================================================================
+    		          L O G S T A S H
+============================================================================
+sudo apt update
+
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+sudo apt-get install apt-transport-https
+
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-7.x.list
+
+sudo apt-get update && sudo apt-get install logstash
+
+cd /usr/share/logstash/bin
+
+sudo ./logstash -e "input{stdin{}} output{stdout{}}"
+
+./logstash -f ~/conf/simple.conf
+
+./logstash-plugin list
+
+./logstash-plugin list --group filter
+
+sudo ./logstash-plugin install logstash-output-email
+
+bin/logstash -f logstash-filter.conf

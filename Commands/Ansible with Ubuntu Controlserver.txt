@@ -1,0 +1,139 @@
+		A N S I B L E    
+============================================================
+ssh -i ~/ansible.pem ubuntu@13.229.66.163
+
+sudo apt update
+
+sudo apt install software-properties-common
+
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+
+sudo apt install ansible -y
+
+python --version
+
+ansible --version
+=============================================================
+ 		  N o d e - 1 
+=============================================================
+sudo apt update
+
+sudo apt install software-properties-common
+
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+
+sudo apt install python -y
+
+python --version
+
+pwd
+
+vi inventory
+
+(insert)PrivateIPAddress(escape)(:wq)
+        ****************
+cat inventory
+
+ansible -i inventory -m ping all   (Error Message)
+
+=============================================================		
+		Configure Ansible
+=============================================================
+ssh -i ~/ansible.pem ubuntu@13.229.66.163
+
+sudo apt update
+
+sudo vi /etc/ssh/sshd_config
+
+(Insert i)  PasswordAuthentication yes (Escape esc)(:wq)
+				   ***
+sudo adduser devops
+
+Enter new UNIX password  : deepu
+			   *****
+Retype new UNIX password : deepu
+			   *****
+ENTER FOR DEFAULTs
+******************
+sudo visudo
+
+devops ALL=(ALL:ALL) NOPASSWD:ALL
+*********************************
+sudo service sshd restart
+
+exit
+
+ssh devops@13.229.66.163
+
+password  : devops
+      	    ******
+sudo service sshd status
+=============================================================		
+		Configure Node-1
+=============================================================
+ssh -i ~/ansible.pem ubuntu@13.212.216.201
+
+sudo vi /etc/ssh/sshd_config
+
+(Insert i)  PasswordAuthentication yes (Escape esc)(:wq)
+ 				   ***
+sudo adduser devops
+
+Enter new UNIX password  : deepu
+			   *****
+Retype new UNIX password : deepu
+			   *****
+ENTER FOR DEFAULTs
+******************
+sudo visudo
+
+devops ALL=(ALL:ALL) NOPASSWD:ALL
+*********************************
+sudo service sshd restart
+
+exit
+
+ssh devops@13.212.216.201
+
+password  : deepu
+      	    *****
+sudo service sshd status
+=============================================================
+	login from ansible control server to node-1
+=============================================================
+ssh devops@13.229.66.163
+
+vi inventory
+
+(insert)PrivateIPAddress(Node-1)(:wq)
+        ************************
+cat inventory
+
+ansible -i inventory -m ping -k all
+SSH password : deepu
+	       *****
+=============================================================
+			Key Pair
+=============================================================
+ssh-keygen
+
+ls ~/.ssh/
+
+ls -l ~/.ssh/
+
+Copy the public key on ansible control server into node-1:
+----------------------------------------------------------
+ssh-copy-id devops@<node-1-privateipaddress>
+
+ssh <node-1-privateipaddress>
+
+exit
+
+ansible -m ping -i inventory all
+=============================================================
+ 		  N o d e - 2 
+=============================================================
+ssh -i ./ansible.pem centos@13.212.9.25
+
+python --version
+

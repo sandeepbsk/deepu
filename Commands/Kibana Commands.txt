@@ -1,0 +1,9 @@
+PUT /students/_doc/1
+{
+    "courses": ["AWS", "AZURE", "DevOps"],
+    "name": "TonyStark",
+    "description": "Joining all the 3 courses",
+    "date": "26-11-2020",
+    "QT-ID": "QTKHAJA-1010"
+}
+

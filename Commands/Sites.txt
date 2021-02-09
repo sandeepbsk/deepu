@@ -1,0 +1,62 @@
+AZURE:
+------
+https://portal.azure.com/signin/index/
+
+https://shell.azure.com/
+
+https://account.azure.com/Subscriptions/Statement?subscriptionId=a20cb624-0254-4914-8f64-72f686228876&returnUrl=https%3A%2F%2Faccount.azure.com%2FSubscriptions&appId=Ibiza_SubscriptionDetailCommandBar
+
+AWS :
+-----
+https://console.aws.amazon.com/
+
+https://chocolatey.org/packages/git.install
+
+https://directdevops.blog/
+
+DevOps :
+--------
+https://lucene.apache.org/
+
+https://www.youtube.com/watch?v=ggOmHlnhPaM&list=PLuVH8Jaq3mLuqXuGs6aeqxhuvCYSzB1kT&index=6
+
+Installation Videos :
+---------------------
+https://www.youtube.com/watch?v=mRILfUNbsIo&list=PLuVH8Jaq3mLud3sVDvJ-gJ__0zd15wGDd&index=14
+
+https://www.youtube.com/watch?v=qLVn2EvPsYc&list=PLuVH8Jaq3mLud3sVDvJ-gJ__0zd15wGDd&index=11
+
+create AWS account & VM instance in EC2 videos :
+------------------------------------------------
+https://www.youtube.com/watch?v=z95MhW1gAcA&list=PLuVH8Jaq3mLszrC7lv68a0VcrDripW-HK
+
+https://www.youtube.com/watch?v=me2s3mTNwGo&list=PLuVH8Jaq3mLszrC7lv68a0VcrDripW-HK&index=2
+
+Instance Types Document : 
+-------------------------
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
+
+Hardware Specifications in Instace Types :
+------------------------------------------
+https://aws.amazon.com/ec2/instance-types
+
+Install Elastic Search :
+------------------------
+https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html#deb-repo
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
+
+Install aws cli:
+----------------
+https://www.youtube.com/watch?v=HSScHRcO0CA&list=PLuVH8Jaq3mLszrC7lv68a0VcrDripW-HK&index=4
+
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+
+Galaxy Ansible:
+---------------
+http://galaxy.ansible.com
+
+Deployment Strategies:
+----------------------
+https://directdevops.blog/2020/12/11/application-deployment-strategies/
+

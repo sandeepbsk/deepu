@@ -1,0 +1,40 @@
+
+{
+“acrylicOpacity”: 0.75,
+“closeOnExit”: true,
+“colorScheme”: “Campbell”,
+“commandline”: “C:\\Program Files\\Git\\bin\\bash.exe”,
+“cursorColor”: “#FFFFFF”,
+“cursorShape”: “bar”,
+“fontFace”: “Consolas”,
+“fontSize”: 10,
+“guid”: “{3fe01e42–086e-4c95-ba57–989a39312e0c}”,
+“historySize”: 9001,
+“icon”: “C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico”,
+“name”: “Git Bash”,
+“padding”: “0, 0, 0, 0”,
+“snapOnInput”: true,
+“startingDirectory”: “%USERPROFILE%”,
+“useAcrylic”: true
+}
+
+
+{
+                "guid": "{b251de01-9ac8-4736-835b-81ad549ebceb}",
+                "name":"Git bash",
+                "hidden":false,
+                "commandline":"C:\\Program Files\\Git\\bin\\bash.exe"
+                "icon""C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "startingDirectory": "%USERPROFILE%"
+}
+==============================================================================================
+				JMES PATH 
+==============================================================================================
+Online JSON to tree diagram visualise site:
+https://vanya.jp.net/vtree/
+
+{
+	"name":"aws",
+	"topic":"cli"
+}
+

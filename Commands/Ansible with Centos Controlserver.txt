@@ -1,0 +1,213 @@
+============================================================		
+		C E N T O S     
+============================================================
+ssh -i ~/ansible.pem centos@54.149.251.57
+
+python --version
+
+sudo vi /etc/ssh/sshd_config
+
+(Insert i)  PasswordAuthentication yes (Escape esc)(:wq)
+								   ***
+sudo service sshd restart
+
+sudo adduser ansible
+
+sudo passwd ansible
+
+New password  : deepu
+                *****
+Retype new password : deepu
+	                  *****
+sudo visudo
+
+(Insert i)ansible ALL=(ALL:ALL) NOPASSWD:ALL(Escape esc)(:wq)
+	  **********************************
+su ansible
+
+New password  : deepu
+                *****
+cd ~
+
+sudo service sshd status
+
+ssh-keygen
+
+Enter file in which to save the key (/home/centos/.ssh/id_rsa):------
+Enter passphrase (empty for no passphrase):-------
+Enter same passphrase again:------
+
+sudo yum update
+
+sudo yum install epel-release -y
+
+sudo yum install ansible -y
+
+ansible --version
+
+exit
+
+=============================================================		
+		Centos Node-1
+=============================================================
+ssh -i ~/ansible.pem centos@54.212.69.219
+
+python --version
+
+sudo vi /etc/ssh/sshd_config
+
+(Insert i)  PasswordAuthentication yes (Escape esc)(:wq)
+ 				   ***
+sudo service sshd restart
+
+sudo adduser ansible
+
+sudo passwd ansible
+
+New password  : deepu
+                *****
+Retype new password : deepu
+	              *****
+sudo visudo
+
+(Insert i)ansible ALL=(ALL:ALL) NOPASSWD:ALL(Escape esc)(:wq)
+	  **********************************
+su ansible
+
+New password  : deepu
+                *****
+sudo service sshd status
+
+ssh-keygen
+
+Enter file in which to save the key (/home/centos/.ssh/id_rsa):------
+Enter passphrase (empty for no passphrase):-------
+Enter same passphrase again:------
+
+sudo yum update
+
+sudo yum install epel-release -y
+
+sudo yum install ansible -y
+
+ansible --version
+
+cd ~
+
+exit
+
+=============================================================		
+		Ubuntu Node-1
+=============================================================
+ssh -i ~/ansible.pem ubuntu@54.185.180.130
+
+sudo apt update
+
+sudo apt install software-properties-common
+
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+
+sudo apt install ansible -y
+
+python --version
+
+ansible --version
+
+sudo vi /etc/ssh/sshd_config
+
+(Insert i)  PasswordAuthentication yes (Escape esc)(:wq)
+ 				   ***
+sudo service sshd restart
+
+sudo adduser devops
+
+Enter new UNIX password:deepu
+Retype new UNIX password:deepu
+Enter the new value, or press ENTER for the default
+        Full Name []:
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+ENTER FOR DEFAULTs
+******************
+sudo visudo
+
+ansible ALL=(ALL:ALL) NOPASSWD:ALL
+*********************************
+
+su ansible
+
+New password  : deepu
+                *****
+sudo service sshd status
+
+ssh-keygen
+
+Enter file in which to save the key (/home/centos/.ssh/id_rsa):------
+Enter passphrase (empty for no passphrase):-------
+Enter same passphrase again:------
+
+sudo yum update
+
+sudo yum install epel-release -y
+
+sudo yum install ansible -y
+
+ansible --version
+
+cd ~
+
+exit
+
+Login to instances
+==================
+ssh ansible@34.216.240.243
+	   (PublicIp)
+ssh-copy-id ansible@172.31.45.205
+		   (PrivateIp)
+ssh-copy-id ansible@172.31.42.24
+		   (PrivateIp)
+ssh-copy-id ansible@localhost
+
+Create a Hosts file in the Inventory
+====================================
+[ansible@ip-172-31-36-184 ~]$ vi hosts
+
+[centos]
+localhost
+172.31.45.205
+
+[ubuntu]
+172.31.42.24
+
+[appserver]
+172.31.45.205
+172.31.42.24
+
+[webserver]
+localhost
+
+:wq
+
+Run following commands
+======================
+ansible -i hosts -m ping all
+
+Create a Learning play book file
+====================================
+[ansible@ip-172-31-36-184 ~]$ vi learningplaybook.yaml
+
+----------Code----------------------
+---
+- name: understanding inventory paramenters
+  become: yes
+  hosts: all
+  tasks:
+  - name: print ansible_host
+    debug:
+      var: ansible_host
+----------Code----------------------
+
+ansible-playbook -i hosts learningplaybook.yaml

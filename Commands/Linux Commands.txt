@@ -1,0 +1,30 @@
+cd C:\Users\HP\Downloads
+
+ssh -i "EC2LEARNING.pem" ec2-user@ec2-18-222-191-204.us-east-2.compute.amazonaws.com
+
+ip addr
+
+======================================================================================
+                     D O C K E R - C O M P O S E 
+======================================================================================
+
+sudo -i
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+docker-compose --version
+
+https://devhints.io/docker-compose
+***********************************Cheats to Execute Docker-Compose
+
+=========================================================================================
+             		TO CREATE APACHE SERVER
+=========================================================================================
+
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install apache2 -y

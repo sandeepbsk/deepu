@@ -1,0 +1,71 @@
+
+https://www.youtube.com/watch?v=HSScHRcO0CA&list=PLuVH8Jaq3mLszrC7lv68a0VcrDripW-HK&index=4
+
+Linux install:
+
+sudo apt update
+
+sudo apt install unzip -y
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+
+sudo ./aws/install
+
+aws --version
+
+============
+CREATE USER: 
+============
+aws configure
+access key:AKIAXPZSU4IL56J2VHME
+secret key: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
+region:ap-south-1
+output format:
+
+aws s3 ls
+-----------------------------------------------------
+#!/bin/bash
+
+=># In this we will try to create ec2 instance
+aws ec2 run-instances --image-id "ami-0a4a70bd98c6d6441" --instance-type "t2.micro" --key-name "climumbai" --security-group-ids "sg-09856719dfb1ab869"
+
+=># To Remove ec2 instance make a note of instance id
+aws ec2 terminate-instances --instance-ids i-0bd538d74168d4e42
+
+================================================================
+aws ec2 describe-vpcs
+
+aws ec2 describe-vpcs --query 'Vpcs[].VpcId' --output text
+
+aws cli vpcs id:
+****************
+{
+    "Vpcs": [
+        {
+            "CidrBlock": "172.31.0.0/16",
+            "DhcpOptionsId": "dopt-8bfc2de0",
+            "State": "available",
+            "VpcId": "vpc-0fca2064",
+            "OwnerId": "514965430807",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-01d3dd69",
+                    "CidrBlock": "172.31.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": true
+        }
+    ]
+}
+
+aws ec2 describe-vpcs --region us-south-1 --query "Vpcs[].VpcsId" --output text
+
+
+
+
+

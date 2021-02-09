@@ -1,0 +1,75 @@
+JSON FILE:
+==========>
+{
+  "name": "JSON file",
+  "authors": ["sandeep","kumar","bandi"],
+  "address" : {
+    "plotno": "130/A",
+	"building": "Laxmi nilayam",
+	"landmark": "near library",
+	"area": "Lingampalli",
+	"city": "Hyderabad"
+  }
+}
+
+https://jsonlint.com/ (json validation link)
+
+YAML FILE:
+==========>
+---
+name: YAML file
+authors:
+- sandeep
+- kumar
+- bandi
+address:
+  plotno: 130/A
+  building: Laxmi nilayam
+  landmark: near library
+  area: Lingampalli
+  city: Hyderabad
+
+https://www.json2yaml.com/ (json2yaml converter online)
+
+JSON Structure:
+===============
+{
+  "AWSTemplateFormatVersion" : "version date",
+
+  "Description" : "JSON string",
+
+  "Metadata" : {
+    template metadata
+  },
+
+  "Parameters" : {
+    set of parameters
+  },
+  
+  "Rules" : {
+    set of rules
+  },
+
+  "Mappings" : {
+    set of mappings
+  },
+
+  "Conditions" : {
+    set of conditions
+  },
+
+  "Transform" : {
+    set of transforms
+  },
+
+  "Resources" : {
+    set of resources
+  },
+  
+  "Outputs" : {
+    set of outputs
+  }
+}
+
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html (docs)
+
