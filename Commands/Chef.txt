@@ -1,0 +1,47 @@
+
+choco install chefdk -y
+
+knife node list
+
+knife --help
+
+knife bootstrap --help
+
+knife bootstrap ec2-3-14-65-238.us-east-2.compute.amazonaws.com -U ubuntu ~/Downloads/chef.pem --sudo -N awsnode1
+
+knife node list
+
+https://manage.chef.io/organizations/awssandeep/nodes (Documentation)
+
+knife bootstrap --help -v
+
+$ --> cd ~/Downloads/chef-starter/chef-repo
+$chef generate --help
+
+$ --> cd ~/Downloads/chef-starter/chef-repo/cookbook
+$chef generate cookbook --help
+$chef generate cookbook -b my_first_cookbook
+
+$ --> cd ~/Downloads/chef-starter/chef-repo
+$chef generate --help
+$chef generate recipe --help
+$chef generate recipe . centos_apache
+$chef generate recipe . ubuntu_apache
+
+$ --> cd ~/Downloads/chef-starter/chef-repo/cookbook
+$chef generate cookbook -b hellochef
+
+In default.rb (recipe file)
+file '/tmp/myfirstfile.txt' do
+    action :create
+end
+
+$ --> cd ~/Downloads/chef-starter/chef-repo/cookbook/hellochef
+$berks install
+$berks upload
+
+https://manage.chef.io/organizations/chefbsk/cookbooks/hellochef/0.1.0/content (To view the recipe file)
+
+$ --> cd ~/Downloads/chef-starter/chef-repo/cookbook/hellochef
+$Set-ExecutionPolicy Unrestricted
+$Set-ExecutionPolicy Bypass
