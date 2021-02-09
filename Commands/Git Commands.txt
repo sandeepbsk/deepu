@@ -8,9 +8,9 @@ git add .\Readme.md
 
 git status
 
-git config --global user.name "qtdevops"
+git config --global user.name "SandeepBsk"
 
-git config --global user.email "qtdevops@gmail.com"
+git config --global user.email "azure.sandeep23@gmail.com"
 
 git commit -m "First Change"
 
@@ -19,6 +19,18 @@ git status
 git log
 
 git log --oneline
+
+git add .
+
+git commit -m "commit all commands upto 09/02/21"
+
+git push
+
+New-Item .\Commands\Jenkins.txt
+
+git add -u (for only modified files)
+
+
 
 ==========>07/02
 git branch
