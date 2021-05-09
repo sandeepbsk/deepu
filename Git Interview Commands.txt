@@ -1,0 +1,38 @@
+GIT Commands
+
+git commit -a
+-a on the command line instructs git to commit the new content of all tracked files that have been modified ->“git add <file>”
+
+git commit --amend
+to fix any broken commit message in the editor
+
+git init
+To create a repository, create a directory for the project if it does not exist, then run the command. By running this command .git directory will be created in the project directory.
+
+git instaweb
+To automatically direct a web browser and run a webserver with an interface into your local repository.
+
+git is-tree
+A tree object including the mode and the name of each item and the SHA-1 value of the blob or the tree
+
+git rm [file]	
+deletes the file from your working directory and stages the deletion.
+
+git log 	
+list the version history for the current branch.
+
+git show [commit]  	
+shows the metadata and content changes of the specified commit.
+
+git tag [commitID] 	
+used to give tags to the specified commit.
+
+git checkout [branch name]
+used to switch from one branch to another.
+
+git checkout -b [branch name]	
+creates a new branch and also switches to it.
+
+git revert <name of bad commit>
+create a new commit that undoes all changes that were made in the bad commit.
+
