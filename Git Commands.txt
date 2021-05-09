@@ -1,0 +1,106 @@
+cd D:\AWS\Git
+
+git init
+
+git status
+
+git add .\Readme.md
+
+whereis git
+
+git status
+
+git config --global user.name "SandeepBsk"
+
+git config --global user.email "azure.sandeep23@gmail.com"
+
+git config --list
+	{OR}
+cat ~/.gitconfig
+
+git commit -m "First Commit"
+
+git status
+
+git log
+
+git log --oneline
+
+git ./deepu/Git Commands.txt
+
+git add .
+
+git commit -m "commit all commands upto 09/02/21"
+
+git push
+
+New-Item .\Commands\Jenkins.txt -->05/02
+
+git add -u (for only modified files)
+
+git add -A (add all the files to the staging area)
+
+git log
+
+git log --oneline
+
+git reset Gitcommands.txt
+
+git status
+
+git restore Jenkins.txt
+
+git status
+
+Remove-Item Jenkins.txt
+
+git status
+
+git log --oneline
+
+git reset --hard
+
+git status
+
+git clean -fd
+
+git status
+
+git log --all
+
+git log -n
+
+git log --author sandeepbsk
+
+git log --before <date>
+
+git log --after <date>
+
+git log -p
+
+git log --stat
+
+
+==========>07/02
+git branch
+
+git branch rel_1.0
+
+git branch rel_1.1
+
+git checkout rel_1.0
+
+git branch
+
+git checkout master
+
+git branch
+
+git checkout -b rel_1.1
+
+git branch
+
+
+
+
+
